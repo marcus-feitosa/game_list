@@ -2,6 +2,7 @@ package com.marcusfeitosa.game_list.service;
 import com.marcusfeitosa.game_list.dto.GameDTO;
 import com.marcusfeitosa.game_list.dto.GameMinDTO;
 import com.marcusfeitosa.game_list.entity.Game;
+import com.marcusfeitosa.game_list.projections.GameMinProjection;
 import com.marcusfeitosa.game_list.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,14 @@ public class GameService {
     }
 
     @Transactional(readOnly = true)
+    public List<GameMinDTO> findAllByList(Long listId){
+        List<GameMinProjection> gamesByList = gameRepository.searchByList(listId);
+        return gamesByList
+                .stream()
+                .map(GameMinDTO::new).toList();
+    }
+
+    @Transactional(readOnly = true)
     public GameDTO findGameById(Long id){
         try{
             Game game = gameRepository.findById(id).get();
@@ -34,4 +43,5 @@ public class GameService {
             throw new RuntimeException(e);
         }
     }
+
 }

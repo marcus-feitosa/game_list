@@ -1,6 +1,7 @@
 package com.marcusfeitosa.game_list.dto;
 
 import com.marcusfeitosa.game_list.entity.Game;
+import com.marcusfeitosa.game_list.projections.GameMinProjection;
 import lombok.*;
 
 @Data
@@ -22,4 +23,12 @@ public class GameMinDTO {
        imgUrl = gameEntity.getImgUrl();
        shortDescription = gameEntity.getShortDescription();
    }
+
+    public GameMinDTO(GameMinProjection gameProjectionEntity) {
+        id = gameProjectionEntity.getId();
+        title = gameProjectionEntity.getTitle();
+        gameYear = gameProjectionEntity.getYear();
+        imgUrl = gameProjectionEntity.getImgUrl();
+        shortDescription = gameProjectionEntity.getShortDescription();
+    }
 }
