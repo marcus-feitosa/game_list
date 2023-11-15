@@ -19,6 +19,7 @@ public class Game {
     private Integer gameYear;
     private String gameGenre;
     private String platform;
+    private String score;
     private String imgUrl;
     private String shortDescription;
     private String longDescription;
