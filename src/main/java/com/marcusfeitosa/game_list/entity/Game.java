@@ -17,10 +17,12 @@ public class Game {
     private Long id;
     private String title;
     private Integer gameYear;
-    private String gameGenre;
+    private String genre;
     private String platform;
     private String score;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 }
