@@ -20,9 +20,8 @@ public class GameController {
     @Autowired
     GameService gameService;
     @GetMapping
-
-    public ResponseEntity getAll(){
-        List<GameDTO> result = gameService.findAll();
-        return ResponseEntity.ok(result);
+    @ResponseStatus(HttpStatus.OK)
+    public List<GameDTO> getAll(){
+        return gameService.findAll();
     }
 }
